@@ -21,13 +21,13 @@ public class DeleteGradeBundleStepDefinitions {
   @Given("the following grade bundle entities exists in the system \\(p9)")
   public void the_following_grade_bundle_entities_exists_in_the_system_p9(
       io.cucumber.datatable.DataTable dataTable) {
-    // Write code here that turns the phrase above into concrete actions
-    // For automatic transformation, change DataTable to one of
-    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-    //
-    // For other transformations you can register a DataTableType.
+	  List<Map<String, String>> rows = dataTable.asMaps();
+	    for (var row : rows) {
+	      String item = row.get(“name”);
+	      int number = Integer.parseInt(row.get(“discount”));
+    grade=getGrade(grade);
+	  CoolSuppliesApplication.getCoolSupplies().addGradeBundle(item, number, grade);
+  }
     throw new io.cucumber.java.PendingException();
   }
 
